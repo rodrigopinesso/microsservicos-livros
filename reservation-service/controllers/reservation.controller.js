@@ -3,21 +3,17 @@ const Reservation = require('../models/Reservation');
 
 const BOOK_SERVICE_URL = 'http://localhost:3001/books';
 
-// Criar reserva
 exports.createReservation = async (req, res) => {
   try {
     const { userId, bookId } = req.body;
 
-    // Verifica disponibilidade
     const { data: livro } = await axios.get(`${BOOK_SERVICE_URL}/${bookId}`);
     if (!livro || livro.status !== 'disponível') {
       return res.status(400).json({ message: 'Livro não disponível para reserva.' });
     }
 
-    // Cria reserva
     const reserva = await Reservation.create({ userId, bookId });
 
-    // Atualiza status para "reservado"
     await axios.patch(`${BOOK_SERVICE_URL}/${bookId}/status`, {
       status: 'reservado'
     });
@@ -31,7 +27,6 @@ exports.createReservation = async (req, res) => {
   }
 };
 
-// Listar reservas por usuário
 exports.getReservationsByUser = async (req, res) => {
   try {
     const { userId } = req.params;
@@ -42,7 +37,6 @@ exports.getReservationsByUser = async (req, res) => {
   }
 };
 
-// Cancelar reserva
 exports.cancelReservation = async (req, res) => {
   try {
     const { id } = req.params;
@@ -55,7 +49,6 @@ exports.cancelReservation = async (req, res) => {
     reserva.status = 'cancelada';
     await reserva.save();
 
-    // Atualiza status do livro para "disponível"
     await axios.patch(`${BOOK_SERVICE_URL}/${reserva.bookId}/status`, {
       status: 'disponível'
     });

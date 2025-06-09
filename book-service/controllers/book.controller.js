@@ -1,6 +1,5 @@
 const Book = require('../models/Book');
 
-// POST /books
 exports.createBook = async (req, res) => {
   try {
     const { titulo, autor } = req.body;
@@ -11,13 +10,11 @@ exports.createBook = async (req, res) => {
   }
 };
 
-// GET /books
 exports.getAllBooks = async (req, res) => {
   const livros = await Book.find();
   res.json(livros);
 };
 
-// GET /books/:id
 exports.getBookById = async (req, res) => {
   try {
     const livro = await Book.findById(req.params.id);
@@ -28,7 +25,6 @@ exports.getBookById = async (req, res) => {
   }
 };
 
-// PUT /books/:id
 exports.updateBook = async (req, res) => {
   try {
     const livro = await Book.findByIdAndUpdate(req.params.id, req.body, { new: true });
@@ -39,7 +35,6 @@ exports.updateBook = async (req, res) => {
   }
 };
 
-// PATCH /books/:id/status
 exports.updateStatus = async (req, res) => {
   try {
     const { status } = req.body;
