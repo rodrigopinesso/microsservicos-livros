@@ -5,11 +5,11 @@ Este projeto implementa um sistema de reserva de livros utilizando a arquitetura
 ---
 
 ## Alunos
-- Rodrigo Yaedu Pinesso 22014201-2
-- Murilo Alves Pereira Varoto 22215190-2 
-- Gustavo dos Santos Arnoni 22014037-2
-- Gustavo Henrique Cordeiro Mesquita 21099392-2
-- Vitor Eiji Goto 22145232-2
+- Rodrigo Yaedu Pinesso RA:22014201-2
+- Murilo Alves Pereira Varoto RA:22215190-2 
+- Gustavo dos Santos Arnoni RA:22014037-2
+- Gustavo Henrique Cordeiro Mesquita RA:21099392-2
+- Vitor Eiji Goto RA:22145232-2
 
 ---
 
